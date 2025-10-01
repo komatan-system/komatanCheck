@@ -52,81 +52,27 @@ function getSeat() {
         const subject = student.subject ?? seat.subject ?? '未設定';
         const absent = student.absent;
 
-        if(subjectFromSS === "" && dayWeekFromSS === "" ){
-
-          bump(subjectSummary, subject, absent);
-          bump(timeSummary, diff, absent);
-          
-          calssInformation.push({
-            date: date,
-            time: time, 
-            start_time: start_time,
-            end_time: end_time,
-            class_time : diff, 
-            teacher: teacher_name,
-            student: student_name,
-            subject: subject,
-            absent: absent
-          });
-        
-        } if (dayWeekFromSS === ""){
-
-          if(subject !== subjectFromSS) continue;
-
-          bump(subjectSummary, subject, absent);
-          bump(timeSummary, diff, absent);
-          
-          calssInformation.push({
-            date: date,
-            time: time, 
-            start_time: start_time,
-            end_time: end_time,
-            class_time : diff, 
-            teacher: teacher_name,
-            student: student_name,
-            subject: subject,
-            absent: absent
-          });
-
-        }if(subjectFromSS === ""){
-
-          if(dayOfWeek !== dayWeekFromSS) continue;
-
-          bump(subjectSummary, subject, absent);
-          bump(timeSummary, diff, absent);
-          
-          calssInformation.push({
-            date: date,
-            time: time, 
-            start_time: start_time,
-            end_time: end_time,
-            class_time : diff, 
-            teacher: teacher_name,
-            student: student_name,
-            subject: subject,
-            absent: absent
-          });
-
-        }else{
-
-          if(subject !== subjectFromSS || dayOfWeek !== dayWeekFromSS) continue;
-
-          bump(subjectSummary, subject, absent);
-          bump(timeSummary, diff, absent);
-          
-          calssInformation.push({
-            date: date,
-            time: time, 
-            start_time: start_time,
-            end_time: end_time,
-            class_time : diff, 
-            teacher: teacher_name,
-            student: student_name,
-            subject: subject,
-            absent: absent
-          });
-
+        if (
+          (subjectFromSS && subject !== subjectFromSS) ||   // 科目フィルタで不一致なら
+          (dayWeekFromSS && dayOfWeek !== dayWeekFromSS)    // 曜日フィルタで不一致なら
+        ) {
+          continue; // 今のループの処理を飛ばして次の要素へ
         }
+
+        bump(subjectSummary, subject, absent);
+        bump(timeSummary, diff, absent);
+          
+        calssInformation.push({
+          date: date,
+          time: time, 
+          start_time: start_time,
+          end_time: end_time,
+          class_time : diff, 
+          teacher: teacher_name,
+          student: student_name,
+          subject: subject,
+          absent: absent
+        });        
 
       };
 
