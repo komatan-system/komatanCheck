@@ -3,7 +3,7 @@
 function getStudentIDFromSS() {
 
   // 入力された生徒名を取得
-  const studentName = INPUT_SHEET.getRange("A2").getValue().toString().trim();
+  const studentName = ACTIVE_SHEET.getRange("A2").getValue().toString().trim();
 
   if (!studentName) {
     Logger.log("❌ 生徒名が入力されていません");
@@ -37,7 +37,7 @@ function getStudentIDFromSS() {
 function getTeachcerIDFromSS(){
 
   // 入力された講師名を取得
-  const teacherName = INPUT_SHEET.getRange("B2").getValue().toString().trim();
+  const teacherName = ACTIVE_SHEET.getRange("B2").getValue().toString().trim();
 
   if (!teacherName) {
     Logger.log("❌ 講師名が入力されていません");

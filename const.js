@@ -9,6 +9,7 @@ const SUBJECTURL = `https://api.comiru.com/${SCHOOL_ID}/subjects`;
 
 //シート名
 const SS = SpreadsheetApp.getActiveSpreadsheet();
+const ACTIVE_SHEET = SS.getActiveSheet();
 const INPUT_SHEET = SS.getSheetByName("コマ数検索");
 const INPUT2_SHEET = SS.getSheetByName("コマ数検索２");
 const STUDENT_LIST_SHEET = SS.getSheetByName("生徒リスト");

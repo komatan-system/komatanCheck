@@ -3,11 +3,11 @@
 function drawStudentCalendar() {
 
   // すでに記載されている情報を削除
-  const lastRow = INPUT_SHEET.getLastRow();
+  const lastRow = ACTIVE_SHEET.getLastRow();
   const numRows = lastRow - 4;
 
   if (numRows > 0) {
-    INPUT_SHEET.getRange(5, 1, numRows, 15).clearContent();
+    ACTIVE_SHEET.getRange(5, 1, numRows, 15).clearContent();
   } else {
     Logger.log("🟡 消すべき行がありません（3行目以下が空）");
   }
@@ -47,13 +47,13 @@ function drawStudentCalendar() {
 
   //表への書き出し：授業情報
 
-  INPUT_SHEET.getRange(5, 1, values.length, 9).setValues(values);
-  INPUT_SHEET.getRange(5, 1, values.length, 9).setFontColors(fontColors);
+  ACTIVE_SHEET.getRange(5, 1, values.length, 9).setValues(values);
+  ACTIVE_SHEET.getRange(5, 1, values.length, 9).setFontColors(fontColors);
 
   //表への書き出し：カウント (6行目のvaluesの項目数から1列空けた2列目に書き出し)
 
   let drawRow = 6; //　<-　書き出しのスタート行
-  INPUT_SHEET.getRange(drawRow++, values[0].length + 2, subjectRows.length, subjectRows[0].length).setValues(subjectRows);
-  INPUT_SHEET.getRange(drawRow + subjectRows.length, values[0].length + 2 ,timeRows.length, timeRows[0].length).setValues(timeRows);
+  ACTIVE_SHEET.getRange(drawRow++, values[0].length + 2, subjectRows.length, subjectRows[0].length).setValues(subjectRows);
+  ACTIVE_SHEET.getRange(drawRow + subjectRows.length, values[0].length + 2 ,timeRows.length, timeRows[0].length).setValues(timeRows);
 
 }

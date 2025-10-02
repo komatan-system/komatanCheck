@@ -2,8 +2,8 @@
 
 function getDate() {
 
-  const startDate = INPUT_SHEET.getRange("C2").getValue();
-  const endDate = INPUT_SHEET.getRange("D2").getValue();
+  const startDate = ACTIVE_SHEET.getRange("C2").getValue();
+  const endDate = ACTIVE_SHEET.getRange("D2").getValue();
 
 
   // 🔸 未入力チェック（Date でない場合は未入力とみなす）
@@ -40,27 +40,11 @@ function formatDate(date) {
   return Utilities.formatDate(date, Session.getScriptTimeZone(), "yyyy-MM-dd");
 }
 
-//科目の取得
-
-function getSubject(){
-
-  const subjectFromSS = INPUT_SHEET.getRange("E2").getValue();
-
-  if (!subjectFromSS) {
-    Logger.log("❌ 科目が入力されていません");
-  } else {
-    Logger.log(subjectFromSS);
-  }
-  
-  return subjectFromSS;
-
-}
-
 //曜日の取得
 
 function getDayWeek(){
 
-  const dayWeekFromSS = INPUT_SHEET.getRange("E2").getValue();
+  const dayWeekFromSS = ACTIVE_SHEET.getRange("E2").getValue();
 
   if (!dayWeekFromSS) {
     Logger.log("❌ 科目が入力されていません");
@@ -77,7 +61,7 @@ function getDayWeek(){
 
 function getSubject(){
 
-  const subjectFromSS = INPUT_SHEET.getRange("F2").getValue();
+  const subjectFromSS = ACTIVE_SHEET.getRange("F2").getValue();
 
   if (!subjectFromSS) {
     Logger.log("❌ 科目が入力されていません");
